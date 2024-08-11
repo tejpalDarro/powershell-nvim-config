@@ -1,0 +1,34 @@
+// Powershell
+// https://www.hanselman.com/blog/you-should-be-customizing-your-powershell-prompt-with-psreadline
+Turn your PowerShell directories up to 11 with Terminal-Icons
+
+$Install-Module -Name Terminal-Icons -Repository PSGallery
+$Install-Module PSReadLine -AllowPrerelease -Force
+
+
+	if ($host.Name -eq 'ConsoleHost')
+	{
+	    Import-Module PSReadLine
+	}
+	Import-Module z
+	Import-Module -Name Terminal-Icons
+
+	Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+	Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+
+	function SetProxy {
+	    & "C:\Users\tejpald\OneDrive - AMDOCS\Backup Folders\Documents\WindowsPowerShell\Scripts\SetProxy.ps1"
+	}
+	function UnsetProxy {
+	    & "C:\Users\tejpald\OneDrive - AMDOCS\Backup Folders\Documents\WindowsPowerShell\Scripts\UnsetProxy.ps1"
+	}
+
+// nvim 
+
+
+vim.keymap.set('i', 'jk', '<Esc>')
+vim.keymap.set('n', '<C-d>', 'zz<C-d>', { silent = true })
+vim.keymap.set('n', '<C-u>', 'zz<C-u>', { silent = true })
+
+-- File explorer
+vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
